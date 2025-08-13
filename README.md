@@ -1,71 +1,160 @@
-# taskaroo README
+# 🧩 Taskaroo — Smart TODO & FIXME Manager for VS Code
 
-This is the README for your extension "taskaroo". After writing up a brief description, we recommend including the following sections.
+![TypeScript](https://img.shields.io/badge/TypeScript-✓-blue) ![ESLint](https://img.shields.io/badge/Linted-✓-green) ![Mocha](https://img.shields.io/badge/Tested-Mocha-red)
 
-## Features
-
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
-
-For example if there is an image subfolder under your extension project workspace:
-
-\!\[feature X\]\(images/feature-x.png\)
-
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
-
-## Requirements
-
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
-
-## Extension Settings
-
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
+A powerful and flexible VS Code extension that intelligently tracks, displays, and navigates through comment-based tasks like `TODO`, `FIXME`, `HACK`, and more.  
+**Boost your code productivity** by managing your task comments in one smart place.
 
 ---
 
-## Following extension guidelines
+## 🎯 Features
 
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
+- ✅ **Auto-detect TODOs**, FIXMEs, and other tags from code comments
+- 🧩 **Custom Tags** support (e.g., `URGENT`, `HACK`, `NOTE`)
+- 🌲 **Tree View Panel** in the Explorer for structured task navigation
+- 🧭 **Quick Navigation** between next/previous tasks
+- ➕ **Add TODO via Context Menu or Title Bar**
+- 📦 **Export all tasks** to a file
+- 🧼 **Mark as Done** with a custom prefix (`DONE`)
+- 🧠 **Fully configurable** via `settings.json`
 
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
+---
 
-## Working with Markdown
+## 🛠️ Tech Stack
 
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
+- **Language:** TypeScript
+- **Framework:** Visual Studio Code API
+- **Tooling:** Mocha + Chai (Testing), ESLint (Linting), ts-node (Dev)
+- **Packaging:** VSCE (Visual Studio Code Extension CLI)
 
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
+---
 
-## For more information
+## 🚀 Getting Started
 
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
+### 🔧 Prerequisites
 
-**Enjoy!**
+- Node.js (v18+ recommended)
+- VS Code
+- `vsce` CLI (for publishing)
+
+### 🔨 Installation
+
+Clone the repo:
+
+```bash
+git clone https://github.com/your-username/taskaroo.git
+cd taskaroo
+npm install
+```
+
+Compile the extension:
+
+```bash
+npm run compile
+```
+
+Launch in VS Code (F5 or Run Extension from VS Code Debug tab).
+
+---
+
+## 💻 Usage
+
+| Command                         | Description                                |
+|---------------------------------|--------------------------------------------|
+| `Taskaroo: Refresh Task List`   | Reload all TODOs and refresh the view      |
+| `Taskaroo: Open Task`           | Open file and jump to task location        |
+| `Taskaroo: Add New TODO`        | Insert a TODO comment into the current file|
+| `Taskaroo: Export Tasks`        | Save all detected tasks to a file          |
+| `Taskaroo: Navigate to Next`    | Jump to next TODO                          |
+| `Taskaroo: Navigate to Previous`| Jump to previous TODO                      |
+
+You can also right-click in the editor or file explorer for quick access.
+
+---
+
+## ⚙️ Configuration
+
+In your `settings.json`:
+
+```json
+"taskaroo.customTags": ["TODO", "FIXME", "HACK", "URGENT"],
+"taskaroo.groupByTag": true,
+"taskaroo.donePrefix": "DONE",
+"taskaroo.includePatterns": ["**/*.{ts,js,py,java,cpp,html}"],
+"taskaroo.excludePatterns": ["**/node_modules/**", "**/.git/**"]
+```
+
+---
+
+## 🧪 Running Tests
+
+Taskaroo uses Mocha + ts-node for tests:
+
+```bash
+npm run test
+```
+
+---
+
+## 📁 Folder Structure
+
+```
+taskaroo/
+├── src/
+│   ├── extension.ts             # Entry point of the extension
+│   ├── provider/
+│   │   └── todoTreeProvider.ts  # VS Code Tree Data Provider
+│   ├── parser/
+│   │   └── todoParser.ts        # Logic for scanning files and parsing tags
+│   ├── commands/
+│   │   └── registerCommands.ts  # Command registrations and implementations
+│   ├── codelens/
+│   │   └── todoCodeLensProvider.ts # Optional CodeLens support
+│   ├── utils/
+│   │   └── debounce.ts          # Utility functions like debouncing
+│   └── tests/
+│       ├── command.test.ts      # Command registration tests
+│       └── parser.test.ts       # Parsing logic tests
+├── out/                         # Compiled JavaScript output
+├── package.json                 # Extension manifest, commands, settings
+├── tsconfig.json                # TypeScript configuration
+└── README.md                    # Project documentation
+```
+
+---
+
+## 🧭 Roadmap
+
+- [ ] Markdown export for tasks
+- [ ] Task filters (by tag, file, priority)
+- [ ] Inline annotations
+- [ ] Git-aware task diffing
+- [ ] Webview UI for custom task board
+
+---
+
+## ⚖️ License
+
+This project is licensed under the **MIT License**.  
+See the [LICENSE](LICENSE) file for full details.
+
+---
+
+## 👨‍💻 Author
+
+- **Developer:** Dharmin Joshi / DevKay  
+- **Email:** info.dharmin@gmail.com  
+- **LinkedIn:** [linkedin.com/in/dharmin-joshi-3bab42232](https://www.linkedin.com/in/dharmin-joshi-3bab42232/)  
+- **GitHub:** [github.com/DharminJoshi](https://github.com/DharminJoshi)  
+
+---
+
+## 🤝​ Community & Support
+
+Join our Discord community for live discussion, feedback, support, and updates:  
+**[Discord Invite](https://discord.com/invite/TsChJGSwk6)**
+
+---
+
+Thank you for using **Taskaroo** 🧩  
+_Keep your TODOs organized and your mind clutter-free!_

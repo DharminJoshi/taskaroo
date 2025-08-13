@@ -2,6 +2,7 @@
   "name": "taskaroo",
   "displayName": "Taskaroo",
   "description": "A smart manager for TODO, FIXME, and other comment tags.",
+  "publisher": "DharminJoshi-Devkay",
   "type": "commonjs",
   "version": "0.0.1",
   "engines": {
