@@ -1,0 +1,175 @@
+{
+  "name": "taskaroo",
+  "displayName": "Taskaroo",
+  "description": "A smart manager for TODO, FIXME, and other comment tags.",
+  "type": "commonjs",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.78.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "views": {
+      "explorer": [
+        {
+          "id": "taskaroo.todoView",
+          "name": "Taskaroo"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "taskaroo.refreshTasks",
+        "title": "Taskaroo: Refresh Task List"
+      },
+      {
+        "command": "taskaroo.openTask",
+        "title": "Taskaroo: Open Task"
+      },
+      {
+        "command": "taskaroo.addTodo",
+        "title": "Taskaroo: Add New TODO"
+      },
+      {
+        "command": "taskaroo.exportTasks",
+        "title": "Taskaroo: Export Tasks"
+      },
+      {
+        "command": "taskaroo.navigateNext",
+        "title": "Taskaroo: Navigate to Next Task"
+      },
+      {
+        "command": "taskaroo.navigatePrev",
+        "title": "Taskaroo: Navigate to Previous Task"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "taskaroo.addTodo",
+          "when": "resourceLangId =~ /javascript|typescript|python|java|cpp|html/",
+          "group": "navigation"
+        }
+      ],
+      "editor/title": [
+        {
+          "command": "taskaroo.addTodo",
+          "when": "editorLangId =~ /javascript|typescript|python|java|cpp|html/",
+          "group": "navigation"
+        }
+      ]
+    },
+    "configuration": {
+      "type": "object",
+      "title": "Taskaroo Configuration",
+      "properties": {
+        "taskaroo.customTags": {
+          "type": "array",
+          "default": [
+            "TODO",
+            "FIXME",
+            "HACK",
+            "URGENT"
+          ],
+          "description": "List of custom tags to detect in comments."
+        },
+        "taskaroo.groupByTag": {
+          "type": "boolean",
+          "default": true,
+          "description": "Group TODO items by tag in the tree view."
+        },
+        "taskaroo.donePrefix": {
+          "type": "string",
+          "default": "DONE",
+          "description": "Prefix used to mark tasks as done."
+        },
+        "taskaroo.includePatterns": {
+          "type": "array",
+          "default": [
+            "**/*.{ts,js,jsx,tsx,py,java,go,cs,cpp,html}"
+          ],
+          "description": "Glob patterns for files to include when searching for TODOs."
+        },
+        "taskaroo.excludePatterns": {
+          "type": "array",
+          "default": [
+            "**/node_modules/**",
+            "**/.git/**"
+          ],
+          "description": "Glob patterns for files/folders to exclude from TODO search."
+        }
+      }
+    },
+    "languages": [
+      {
+        "id": "javascript"
+      },
+      {
+        "id": "typescript"
+      },
+      {
+        "id": "python"
+      },
+      {
+        "id": "java"
+      },
+      {
+        "id": "cpp"
+      },
+      {
+        "id": "html"
+      }
+    ],
+    "codeLens": [
+      {
+        "language": "javascript"
+      },
+      {
+        "language": "typescript"
+      },
+      {
+        "language": "python"
+      },
+      {
+        "language": "java"
+      },
+      {
+        "language": "cpp"
+      },
+      {
+        "language": "html"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "mocha --require ts-node/register src/tests/**/*.test.ts"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.3.5",
+    "@types/glob": "^9.0.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "22.x",
+    "@types/vscode": "^1.78.0",
+    "@typescript-eslint/eslint-plugin": "^8.39.0",
+    "@typescript-eslint/parser": "^8.39.0",
+    "@vscode/test-cli": "^0.0.11",
+    "@vscode/test-electron": "^2.5.2",
+    "chai": "^4.3.7",
+    "eslint": "^9.32.0",
+    "glob": "^11.0.3",
+    "mocha": "^11.7.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2"
+  }
+}
