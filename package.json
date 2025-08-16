@@ -69,6 +69,14 @@
           "when": "editorLangId =~ /javascript|typescript|python|java|cpp|html/",
           "group": "navigation"
         }
+      ],
+      "view/title": [
+        {
+          "command": "taskaroo.refreshTasks",
+          "when": "view == taskaroo.todoView",
+          "group": "navigation",
+          "alt": "Refresh TODOs"
+        }
       ]
     },
     "configuration": {
