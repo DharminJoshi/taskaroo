@@ -2,9 +2,8 @@
   "name": "taskaroo",
   "displayName": "Taskaroo",
   "description": "A smart manager for TODO, FIXME, and other comment tags.",
+  "version": "0.0.2",
   "publisher": "DharminJoshi-Devkay",
-  "type": "commonjs",
-  "version": "0.0.1",
   "engines": {
     "vscode": "^1.78.0"
   },
@@ -15,6 +14,8 @@
     "onStartupFinished"
   ],
   "main": "./out/extension.js",
+  "icon": "assets/icon.png",
+  "type": "commonjs",
   "repository": {
     "type": "git",
     "url": "https://github.com/DharminJoshi/taskaroo.git"
@@ -42,16 +43,16 @@
         "title": "Taskaroo: Add New TODO"
       },
       {
-        "command": "taskaroo.exportTasks",
-        "title": "Taskaroo: Export Tasks"
+        "command": "taskaroo.exportTodos",
+        "title": "Taskaroo: Export TODOs"
       },
       {
-        "command": "taskaroo.navigateNext",
-        "title": "Taskaroo: Navigate to Next Task"
+        "command": "taskaroo.nextTodo",
+        "title": "Taskaroo: Navigate to Next TODO"
       },
       {
-        "command": "taskaroo.navigatePrev",
-        "title": "Taskaroo: Navigate to Previous Task"
+        "command": "taskaroo.previousTodo",
+        "title": "Taskaroo: Navigate to Previous TODO"
       }
     ],
     "menus": {
@@ -112,44 +113,20 @@
       }
     },
     "languages": [
-      {
-        "id": "javascript"
-      },
-      {
-        "id": "typescript"
-      },
-      {
-        "id": "python"
-      },
-      {
-        "id": "java"
-      },
-      {
-        "id": "cpp"
-      },
-      {
-        "id": "html"
-      }
+      { "id": "javascript" },
+      { "id": "typescript" },
+      { "id": "python" },
+      { "id": "java" },
+      { "id": "cpp" },
+      { "id": "html" }
     ],
     "codeLens": [
-      {
-        "language": "javascript"
-      },
-      {
-        "language": "typescript"
-      },
-      {
-        "language": "python"
-      },
-      {
-        "language": "java"
-      },
-      {
-        "language": "cpp"
-      },
-      {
-        "language": "html"
-      }
+      { "language": "javascript" },
+      { "language": "typescript" },
+      { "language": "python" },
+      { "language": "java" },
+      { "language": "cpp" },
+      { "language": "html" }
     ]
   },
   "scripts": {
