@@ -12,6 +12,7 @@ All notable changes to the "taskaroo" extension will be documented in this file.
 - Support for detecting pre-existing `TODO`, `FIXME`, `HACK`, `URGENT` comments in workspace files
 - Auto-refreshing of the TODO tree when files are created or deleted
 - Status bar now dynamically displays the number of TODOs in the workspace
+- Refresh button added to the Taskaroo explorer view title for quick TODO list refresh
 
 ### Changed
 - Improved regex logic in parser to support custom tags and optional metadata like due dates and severity
