@@ -42,7 +42,7 @@ A powerful and flexible VS Code extension that intelligently tracks, displays, a
 Clone the repo:
 
 ```bash
-git clone https://github.com/your-username/taskaroo.git
+git clone https://github.com/DharminJoshi/taskaroo.git
 cd taskaroo
 npm install
 ```
